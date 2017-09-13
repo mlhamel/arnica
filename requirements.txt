@@ -1,0 +1,8 @@
+luigi
+psycopg2
+scrapy
+django
+django-environ
+scrapy-djangoitem
+datadog
+click
