@@ -6,3 +6,4 @@ django-environ
 scrapy-djangoitem
 datadog
 click
+-emodules/opensky-api/python/

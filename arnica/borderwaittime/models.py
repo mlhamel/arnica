@@ -14,14 +14,8 @@ class Tick(models.Model):
         return self.office
 
     def __repr__(self):
-        return "<BorderWaitTime: id='%d', "\
-               "office='%s', "\
-               "commercial_flow='%s', "\
-               "travellers_flow='%s', "\
-               "updated='%s'>" % (
-            self.id,
-            self.office,
-            self.commercial_flow,
-            self.travellers_flow,
-            self.updated
-        )
+        return f"<Tick: id='{self.id}', "\
+               f"office='{self.office}', "\
+               f"commercial_flow='{self.commercial_flow}', "\
+               f"travellers_flow='{self.travellers_flow}', "\
+               f"updated='{self.updated}'>"

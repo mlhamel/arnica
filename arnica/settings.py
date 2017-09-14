@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'arnica.borderwaittime',
+    'arnica.opensky',
 ]
 
 MIDDLEWARE = [
@@ -81,6 +82,11 @@ datadog.initialize(**{
     'api_key': env('DATADOG_API_KEY'),
     'app_key': env('DATADOG_APP_KEY')
 })
+
+OPENSKY_API = {
+    'username': env('OPENSKY_USERNAME'),
+    'password': env('OPENSKY_PASSWORD')
+}
 
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'

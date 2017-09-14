@@ -1,8 +1,8 @@
+import scrapy
+
 from typing import Iterator
 from datetime import datetime
 from dateutil import parser
-
-import scrapy
 
 from arnica.borderwaittime.items import BorderWaitTimeItem
 from arnica.lib.timezone import gen_tzinfos

@@ -1,17 +1,21 @@
-
 # -*- coding: utf-8 -*-
+import logging
 
-# Define your item pipelines here
-#
-# Don't forget to add your pipeline to the ITEM_PIPELINES setting
-# See: http://doc.scrapy.org/en/latest/topics/item-pipeline.html
-from arnica.borderwaittime.items import BorderWaitTimeItem
-from arnica.borderwaittime.pipelines import BorderWaitTimePipeline
+from django.db.utils import IntegrityError
+
+from datadog import statsd
+
+logger = logging.getLogger(__name__)
 
 
 class ArnicaPipeline(object):
+    def _exception_raised(self, item, e):
+        logger.error(f"Duplicate {item.__class__.__name__}: %s", item)
+        statsd.increment('arnicas-integrity-error', tags=dict(**item))
+
     def process_item(self, item, spider):
-        if isinstance(item, BorderWaitTimeItem):
-            pipeline = BorderWaitTimePipeline()
-            pipeline.process_item(item, spider)
+        try:
+            item.save()
+        except IntegrityError as e:
+            self._exception_raised(item, e)
         return item
