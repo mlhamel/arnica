@@ -1,3 +1,6 @@
 [submodule "modules/opensky-api"]
 	path = modules/opensky-api
 	url = https://github.com/openskynetwork/opensky-api
+[submodule "modules/mypy-django"]
+	path = modules/mypy-django
+	url = git@github.com:machinalis/mypy-django.git
