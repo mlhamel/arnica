@@ -2,6 +2,8 @@ import os
 import datadog
 import environ
 
+from typing import Any, List
+
 env = environ.Env()
 env.read_env('.env')
 
@@ -20,7 +22,7 @@ DATABASES = {
     'default': env.db(),
 }
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [] # type: List[Any]
 
 INSTALLED_APPS = [
     'django.contrib.admin',

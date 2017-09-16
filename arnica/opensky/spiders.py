@@ -15,7 +15,7 @@ class OpenskySpider(scrapy.Spider):
               "longitude", "latitude", "altitude", "on_ground", "velocity", "heading",
               "vertical_rate", "sensors"]
 
-    def parse(self, response) :
+    def parse(self, response) -> Iterator[OpenSkyItem]:
         jsonresponse = json.loads(response.body_as_unicode())
         for state in jsonresponse["states"]:
             item = OpenSkyItem()
