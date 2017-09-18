@@ -2,8 +2,6 @@ import os
 import datadog
 import environ
 
-from typing import Any, List
-
 env = environ.Env()
 env.read_env('.env')
 
@@ -11,7 +9,7 @@ env.read_env('.env')
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'yw$s3590=5+xuvss11_w&0v(wlzyw&ajta7lt(y+5ssu4v@$$3'
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG', cast=bool, default=False)
@@ -22,7 +20,7 @@ DATABASES = {
     'default': env.db(),
 }
 
-ALLOWED_HOSTS = [] # type: List[Any]
+ALLOWED_HOSTS = []  # type: List[Any]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -37,6 +35,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
