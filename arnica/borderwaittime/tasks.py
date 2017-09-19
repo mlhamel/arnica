@@ -7,4 +7,8 @@ class BorderWaitTimeCrawlTask(AbstractCrawlTask):
 
 
 class BorderWaitStatPerHour(AbstractDjangoBasedTask):
-    pass
+    def requires(self):
+        return [BorderWaitTimeCrawlTask]
+
+    def run(self):
+        pass

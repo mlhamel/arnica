@@ -1,4 +1,3 @@
--emodules/opensky-api/python/
 click
 datadog
 django
@@ -6,6 +5,7 @@ django-environ
 gunicorn
 invoke
 luigi
+opensky-api
 psycopg2
 pytest
 scrapy

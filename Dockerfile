@@ -5,10 +5,14 @@ ENV PYTHONUNBUFFERED 1
 RUN pip install -U 'pip > 9'
 
 RUN mkdir /app
+RUN mkdir -p /tmp/wheel
+
+ADD . /app
+
 WORKDIR /app
 
-ADD requirements.txt /tmp/
-RUN pip install --no-cache-dir -r /tmp/requirements.txt
+RUN pip install --find-links=wheel/ --no-cache-dir -r requirements.txt
+RUN pip install .
 
 # CMD python manage.py runserver 0.0.0.0:8000
 CMD gunicorn arnica.wsgi:application --log-file - -b 0.0.0.0:8000

@@ -1,7 +1,9 @@
-.env
 __pycache__/
+.cache/
+.env
 .mypy_cache/
 .vscode/
 arnica.egg-info/
-
+build/
 logs/
+state.pickle
