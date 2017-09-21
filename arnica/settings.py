@@ -20,7 +20,7 @@ DATABASES = {
     'default': env.db(),
 }
 
-ALLOWED_HOSTS = []  # type: List[Any]
+ALLOWED_HOSTS = ['*']  # type: List[Any]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
